@@ -16,8 +16,8 @@
         </div>
         <p class="mt-3">支払者</p>
         <div>
-            <input id="radio-a" type="radio" name="payer" value="shiho" checked><label for="radio-a">志歩</label>
-            <input id="radio-b" type="radio" name="payer" value="ryohei"><label for="radio-b">諒平</label>
+            <input id="radio-a" type="radio" name="payer" value="志歩" checked><label for="radio-a">志歩</label>
+            <input id="radio-b" type="radio" name="payer" value="諒平"><label for="radio-b">諒平</label>
         </div>
         <p class="mt-3">カテゴリ</p>
         <div>
@@ -81,10 +81,10 @@
         $(function () {
             $('form').submit(function () {
                 const date      = $('input[name="date"]').val();
-                const payer     = $('input[name="payer"]').val();
-                const category  = $('input[name="category"]').val();
+                const payer     = $('input[name="payer"]').value;
+                const category  = $('input[name="category"]').value;
                 const cost      = $('input[name="cost"]').val();
-                const other.    = $('input[name="other"]').val();
+                const other　　    = $('input[name="other"]').val();
                 const msg       = `${date}\n${payer}\n${category}\n${cost}\n${other}`;
                 sendText(msg);
                 return false;
