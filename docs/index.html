@@ -85,7 +85,7 @@
                 const category  = $('select > option:selected').val();
                 const cost      = $('input[name="cost"]').val();
                 const other　　    = $('input[name="other"]').val();
-                const msg       = `${date}\n${payer}\n${category}\n${cost}\n${other}`;
+                const msg       = `家計簿に追加します。\n${date}\n${payer}\n${category}\n${cost}\n${other}`;
                 sendText(msg);
                 return false;
             });
