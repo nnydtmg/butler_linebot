@@ -81,13 +81,13 @@
         $(function () {
             $('form').submit(function () {
                 const date      = $('input[name="date"]').val();
-                const radio = $(document).getElementsByName('payer');
+                const radio = document.getElementsByName('payer');
                 for (const btn of radio) {
                   if (btn.checked == true) {
                     const payer = btn.value;
                   }
                 }
-                const category  = $(document).querySelector('select').value;
+                const category  = document.querySelector('select').value;
                 const cost      = $('input[name="cost"]').val();
                 const other　　    = $('input[name="other"]').val();
                 const msg       = `${date}\n${payer}\n${category}\n${cost}\n${other}`;
