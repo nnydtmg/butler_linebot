@@ -81,8 +81,8 @@
         $(function () {
             $('form').submit(function () {
                 const date      = $('input[name="date"]').val();
-                const payer     = $('elements["payer"]').value;
-                const category  = $('elements["category"]').value;
+                const payer     = $('elements[name="payer"]').value;
+                const category  = $('elements[name="category"]').value;
                 const cost      = $('input[name="cost"]').val();
                 const other　　    = $('input[name="other"]').val();
                 const msg       = `${date}\n${payer}\n${category}\n${cost}\n${other}`;
