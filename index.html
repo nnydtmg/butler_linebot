@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
 </head>
 <body>
-    <p class="text-center">【家計簿登録フォーム2】</p>
+    <p class="text-center">【家計簿登録フォーム3】</p>
     <form class="w-75 mx-auto">
         <p class="mt-3">日付</p>
         <div>
@@ -21,7 +21,7 @@
         </div>
         <p class="mt-3">カテゴリ</p>
         <div>
-            <select name="category" size="1" class="form-control w-50 mt-1">
+            <select name="category" size="1" class="form-control w-100 mt-1">
                <option value="food">食費</option>
                <option value="eatout">外食</option>
                <option value="necessities">日用品</option>
@@ -81,8 +81,8 @@
         $(function () {
             $('form').submit(function () {
                 const date      = $('input[name="date"]').val();
-                const payer     = $('elements[name="payer"]').value;
-                const category  = $('elements[name="category"]').value;
+                const payer     = $('document.getElementsByName("payer")').value;
+                const category  = $('document.querySelector("category")').value;
                 const cost      = $('input[name="cost"]').val();
                 const other　　    = $('input[name="other"]').val();
                 const msg       = `${date}\n${payer}\n${category}\n${cost}\n${other}`;
