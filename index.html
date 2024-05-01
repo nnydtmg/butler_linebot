@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
 </head>
 <body>
-    <p class="text-center">【家計簿登録フォーム3】</p>
+    <p class="text-center">【家計簿登録フォーム4】</p>
     <form class="w-75 mx-auto">
         <p class="mt-3">日付</p>
         <div>
@@ -22,13 +22,13 @@
         <p class="mt-3">カテゴリ</p>
         <div>
             <select name="category" size="1" class="form-control w-100 mt-1">
-               <option value="food">食費</option>
-               <option value="eatout">外食</option>
-               <option value="necessities">日用品</option>
-               <option value="clothes">衣類</option>
-               <option value="energy">光熱費</option>
-               <option value="entertainment">娯楽</option>
-               <option value="others">その他</option>
+               <option value="食費">食費</option>
+               <option value="外食">外食</option>
+               <option value="日用品">日用品</option>
+               <option value="衣類">衣類</option>
+               <option value="光熱費">光熱費</option>
+               <option value="娯楽">娯楽</option>
+               <option value="その他">その他</option>
             </select>
         </div>
         <p class="mt-3">金額</p>
@@ -81,13 +81,8 @@
         $(function () {
             $('form').submit(function () {
                 const date      = $('input[name="date"]').val();
-                const radio = document.getElementsByName('payer');
-                for (const btn of radio) {
-                  if (btn.checked == true) {
-                    const payer = btn.value;
-                  }
-                }
-                const category  = document.querySelector('select').value;
+                const payer     = $('input[name="payer"]:checked').val();
+                const category  = $('select > option:selected').val();
                 const cost      = $('input[name="cost"]').val();
                 const other　　    = $('input[name="other"]').val();
                 const msg       = `${date}\n${payer}\n${category}\n${cost}\n${other}`;
