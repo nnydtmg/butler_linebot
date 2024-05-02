@@ -105,7 +105,7 @@ function isEndOfMonth() {
  * @param {String} [delimiter] - 日付けの間の区切り文字
  * @return {String} (YYYY区切り文字MM区切り文字DD)形式の日付文字列
  */
-function buildDateString(date, delimiter) {
+function buildMonDateString(date, delimiter) {
   var delimiterString = (delimiter == undefined) ? '/' : delimiter;
   return (date.getMonth() + 1) + delimiterString + date.getDate();
 }
