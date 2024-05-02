@@ -2,16 +2,15 @@
 // LineReplyUrl                    ：LINE Messaging APIのURL（LINEからの応答用）
 // LinePushUrl                     ：LINE Messaging APIのURL（LINEに対してPOSTする用）
 // LinePushNotificationDestination : LineのUserID
-// HouseholdAccountBookUrl         ：家計簿のURL
+// InputCostBookUrl                ：家計簿のスプレッドシートID
+// InputShoppingBookUrl            ：買い物リストのスプレッドシートID
+// CostInputLiffFormUrl            :家計簿登録用LIFFのURL
 var _Config = {
   LineAccessToken                 : '*********',
   LineReplyUrl                    : 'https://api.line.me/v2/bot/message/reply',
   LinePushUrl                     : 'https://api.line.me/v2/bot/message/push',
   LinePushNotificationDestination : '*********',
   InputCostBookUrl                : '*********',
-  LiffFormUrl                     : '*********'
+  InputShoppingBookUrl            : '*********',
+  CostInputLiffFormUrl            : '*********'
 };
-
-var _PersonArray = ['*********','*********'];
-
-var _SubjectArray = ['食費','外食','日用品','衣類','光熱費','娯楽','その他'];
