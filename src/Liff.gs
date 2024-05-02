@@ -10,7 +10,7 @@ function costInputLiff() {
           {
             "type": "uri",
             "label": "はい",
-            "uri": _Config.LiffFormUrl
+            "uri": _Config.CostInputLiffFormUrl
           },
           {
             "type": "message",
