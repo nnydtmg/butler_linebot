@@ -12,13 +12,17 @@ function doPost(e) {
 
   //送られたメッセージを取得
   const userMessage = json.events[0].message.text;
-  if (userMessage === "家計簿登録") {
-    var postMessage = costInputLiff();
-  } else if (userMessage === "いいえ") {
-    var postMessage = buildMessages("終了しました");
+  //LINEメッセージを改行で分割
+  const messageParameter = userMessage.split(/\r\n|\n/);
+  //送信者名を取得
+  const userName = getUserName(json.events[0].source.userId);
+
+  if (messageParameter[0] === "家計簿に追加します。") {
+    var postMessage = moneyInput(messageParameter);
+  } else if (messageParameter[0] === "リスト追加") {
+    var postMessage = shoppingListInput(messageParameter,userName);
   } else {
-    // spreadsheetに追記
-    var postMessage = moneyInput(userMessage);
+    var postMessage = convertUserMessageToLineMessage(userMessage);
   }
   // LineにPostする
   UrlFetchApp.fetch(_Config.LineReplyUrl, createReplyRequest(replyToken, postMessage));
@@ -29,15 +33,13 @@ function doPost(e) {
 
 function convertUserMessageToLineMessage(userMessage) {
   if (userMessage === '家計簿登録') {
-    var quickReplyItems = buildQuickReplyItemsForArray(_PersonArray);
-    return buildQuickReplyMessages('支払者を選んでね😍', quickReplyItems);
-  } else if (_PersonArray.includes(userMessage)) {
-    tempInput(userMessage);
-    var quickReplyItems = buildQuickReplyItemsForArray(_SubjectArray);
-    return buildQuickReplyMessages('分類を選んでね😍', quickReplyItems);
-  } else if (_SubjectArray.includes(userMessage)) {
-    tempInput(userMessage);
-    return buildMessage('金額を入力してね😍', quickReplyItems);
+    return costInputLiff();
+  // } else if (userMessage === '買い物リスト') {
+  //   var quickReplyItems = buildQuickReplyItemsForArray(_ListArray);
+  //   return buildQuickReplyMessages('何する？😍', quickReplyItems);
+  // } else if (_SubjectArray.includes(userMessage)) {
+  //   tempInput(userMessage);
+  //   return buildMessage('金額を入力してね😍', quickReplyItems);
   // } else if (userMessage === '入力') {
   //   var quickReplyItems = buildQuickReplyItemsForTemplates(InputTemplateKeys.VariableCost, InputTemplates.VariableCost);
   //   return buildQuickReplyMessages('入力テンプレートを選んでね😍', quickReplyItems);
@@ -51,6 +53,8 @@ function convertUserMessageToLineMessage(userMessage) {
   // } else if (userMessage === '最終結果') {
   //   return buildMessages(incomeAndExpenditureForThisMonthMessage());
   // } 
+  } else if (userMessage === 'いいえ') {
+    return buildMessage(exitMessage());
   } else {
     return buildMessage(notExistsMessage());
   }
