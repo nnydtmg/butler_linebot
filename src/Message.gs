@@ -84,4 +84,17 @@ function buildQuickReplyItemsForTemplates(keys, templateValues) {
 function notExistsMessage() {
   return 'そのメッセージに回答する答えが存在しないよ😭';
 }
-
+/**
+ * 「いいえ」と入力された時のメッセージ
+ * @return {String} 入力された内容に回答出来ない時のメッセージ
+ */
+function exitInputMessage() {
+  return '追加しました！！';
+}
+/**
+ * 「いいえ」と入力された時のメッセージ
+ * @return {String} 入力された内容に回答出来ない時のメッセージ
+ */
+function exitMessage() {
+  return 'また使ってね〜';
+}
