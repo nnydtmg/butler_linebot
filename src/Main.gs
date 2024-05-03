@@ -21,6 +21,8 @@ function doPost(e) {
     var postMessage = moneyInput(messageParameter);
   } else if (messageParameter[0] === "リスト追加") {
     var postMessage = shoppingListInput(messageParameter,userName);
+  } else if (messageParameter[0] === "リスト削除") {
+    var postMessage = shoppingListDelete(messageParameter);
   } else {
     var postMessage = convertUserMessageToLineMessage(userMessage);
   }
@@ -38,6 +40,8 @@ function convertUserMessageToLineMessage(userMessage) {
     return shoppingListOutput();
   } else if (userMessage === "買い物リスト追加") {
     return buildMessage('以下の形式で入力してね！\nリスト追加\n買うもの１\n買うもの２');
+  } else if (userMessage === "買い物リスト削除") {
+    return buildMessage('以下の形式で入力してね！\nリスト削除\n買うもの１\n買うもの２');
   // } else if (userMessage === '入力') {
   //   var quickReplyItems = buildQuickReplyItemsForTemplates(InputTemplateKeys.VariableCost, InputTemplates.VariableCost);
   //   return buildQuickReplyMessages('入力テンプレートを選んでね😍', quickReplyItems);
