@@ -53,6 +53,35 @@ function shoppingListOutput(){
   return buildMessage(returnMessage);
 }
 
+function shoppingListDelete(messageParameter) {
+  const sheetName = "買い物リスト";
+  const baseSheet = getBaseSheet(_Config.InputShoppingBookUrl,sheetName);
+  let lastRow = baseSheet.getLastRow();
+  let shoppingList = [];
+  
+  let returnMessage = '結果発表〜！';
+  
+  //セルへの書き込み
+  for (let i = 1; i < messageParameter.length; i++) {
+    if (lastRow > 1){
+      shoppingList = getShoppingList(baseSheet,lastRow);
+    };
+    if (shoppingList.length > 0){
+      if (shoppingList.indexOf(messageParameter[i]) > -1){
+        baseSheet.deleteRow(shoppingList.indexOf(messageParameter[i]) + 2);
+        returnMessage += '\n' + messageParameter[i] + ' を削除したよ〜';
+        lastRow -= 1;
+      } else {
+        returnMessage += '\n' + messageParameter[i] + ' はリストにないよ〜';
+      };
+    } else {
+      returnMessage += '\n' + ' リストに何もないよ〜';
+    };
+  }
+
+  return buildMessage(returnMessage);
+}
+
 function getShoppingList(baseSheet,lastRow){
   var shoppingList = baseSheet.getRange('C2:C' + lastRow).getValues().flat().filter(String).map(String);
   return shoppingList;
