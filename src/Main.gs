@@ -34,9 +34,8 @@ function doPost(e) {
 function convertUserMessageToLineMessage(userMessage) {
   if (userMessage === '家計簿登録') {
     return costInputLiff();
-  // } else if (userMessage === '買い物リスト') {
-  //   var quickReplyItems = buildQuickReplyItemsForArray(_ListArray);
-  //   return buildQuickReplyMessages('何する？😍', quickReplyItems);
+  } else if (userMessage === 'リスト参照') {
+    return shoppingListOutput();
   // } else if (_SubjectArray.includes(userMessage)) {
   //   tempInput(userMessage);
   //   return buildMessage('金額を入力してね😍', quickReplyItems);
