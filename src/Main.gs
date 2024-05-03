@@ -36,9 +36,8 @@ function convertUserMessageToLineMessage(userMessage) {
     return costInputLiff();
   } else if (userMessage === 'リスト参照') {
     return shoppingListOutput();
-  // } else if (_SubjectArray.includes(userMessage)) {
-  //   tempInput(userMessage);
-  //   return buildMessage('金額を入力してね😍', quickReplyItems);
+  } else if (userMessage === "買い物リスト追加") {
+    return buildMessage('以下の形式で入力してね！\nリスト追加\n買うもの１\n買うもの２');
   // } else if (userMessage === '入力') {
   //   var quickReplyItems = buildQuickReplyItemsForTemplates(InputTemplateKeys.VariableCost, InputTemplates.VariableCost);
   //   return buildQuickReplyMessages('入力テンプレートを選んでね😍', quickReplyItems);

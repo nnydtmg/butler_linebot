@@ -34,7 +34,7 @@ curl -X POST https://api.line.me/v2/bot/richmenu \
                 },
                 "action": {
                     "type": "message",
-                    "text": "今月の支出状況"
+                    "text": "買い物リスト追加"
                 }
             },
             {
@@ -46,7 +46,7 @@ curl -X POST https://api.line.me/v2/bot/richmenu \
                 },
                 "action": {
                     "type": "message",
-                    "text": "科目結果"
+                    "text": "家計簿登録"
                 }
             },
             {
@@ -70,7 +70,7 @@ curl -X POST https://api.line.me/v2/bot/richmenu \
                 },
                 "action": {
                     "type": "message",
-                    "text": "固定費入力"
+                    "text": "リスト参照"
                 }
             },
             {
