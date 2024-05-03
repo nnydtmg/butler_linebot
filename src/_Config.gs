@@ -14,3 +14,5 @@ var _Config = {
   InputShoppingBookUrl            : '*********',
   CostInputLiffFormUrl            : '*********'
 };
+
+var _ShoppingListArray = ['リスト参照','リスト一括削除','買い物リスト追加','買い物リスト削除'];

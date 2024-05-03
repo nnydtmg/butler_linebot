@@ -93,11 +93,12 @@ function shoppingListAllDelete(){
     for (let i = lastRow; i > 1; i--){
       baseSheet.deleteRow(i);
       returnMessage += '\n' + shoppingList[lastRow - i];
-    }
+    };
+    returnMessage += '\n' + 'を全部削除したよ〜';
   } else {
     returnMessage += '\n' + '何もないよ〜';
   };
-  returnMessage += '\n' + 'を全部削除したよ〜';
+  
   return buildMessage(returnMessage);
 }
 

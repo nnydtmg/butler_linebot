@@ -36,27 +36,17 @@ function doPost(e) {
 function convertUserMessageToLineMessage(userMessage) {
   if (userMessage === '家計簿登録') {
     return costInputLiff();
+  } else if (userMessage === '買い物リスト') {
+    var quickReplyItems = buildQuickReplyItemsForArray(_ShoppingListArray);
+    return buildQuickReplyMessages('何する？😍',quickReplyItems);
   } else if (userMessage === 'リスト参照') {
     return shoppingListOutput();
   } else if (userMessage === 'リスト一括削除') {
     return shoppingListAllDelete();
   } else if (userMessage === "買い物リスト追加") {
-    return buildMessage('以下の形式で入力してね！\nリスト追加\n買うもの１\n買うもの２');
+    return buildMessage('以下の形式で入力してね！\nリスト追加\n買うもの1\n買うもの2');
   } else if (userMessage === "買い物リスト削除") {
-    return buildMessage('以下の形式で入力してね！\nリスト削除\n買うもの１\n買うもの２');
-  // } else if (userMessage === '入力') {
-  //   var quickReplyItems = buildQuickReplyItemsForTemplates(InputTemplateKeys.VariableCost, InputTemplates.VariableCost);
-  //   return buildQuickReplyMessages('入力テンプレートを選んでね😍', quickReplyItems);
-  // } else if (userMessage === '固定費入力') {
-  //   var quickReplyItems = buildQuickReplyItemsForTemplates(InputTemplateKeys.FixedCost, InputTemplates.FixedCost);
-  //   return buildQuickReplyMessages('入力テンプレートを選んでね😍', quickReplyItems);
-  // } else if (isExistsSubject(userMessage)) {
-  //   return buildMessages(paymentInfo(userMessage));
-  // } else if (userMessage === 'ヘルプ') {
-  //   return buildMessage(helpMessage());
-  // } else if (userMessage === '最終結果') {
-  //   return buildMessages(incomeAndExpenditureForThisMonthMessage());
-  // } 
+    return buildMessage('以下の形式で入力してね！\nリスト削除\n買うもの1\n買うもの2');
   } else if (userMessage === 'いいえ') {
     return buildMessage(exitMessage());
   } else {
