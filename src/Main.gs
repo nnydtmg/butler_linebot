@@ -38,6 +38,8 @@ function convertUserMessageToLineMessage(userMessage) {
     return costInputLiff();
   } else if (userMessage === 'リスト参照') {
     return shoppingListOutput();
+  } else if (userMessage === 'リスト一括削除') {
+    return shoppingListAllDelete();
   } else if (userMessage === "買い物リスト追加") {
     return buildMessage('以下の形式で入力してね！\nリスト追加\n買うもの１\n買うもの２');
   } else if (userMessage === "買い物リスト削除") {

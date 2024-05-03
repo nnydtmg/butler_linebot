@@ -82,6 +82,25 @@ function shoppingListDelete(messageParameter) {
   return buildMessage(returnMessage);
 }
 
+function shoppingListAllDelete(){
+  const sheetName = "買い物リスト";
+  const baseSheet = getBaseSheet(_Config.InputShoppingBookUrl,sheetName);
+  const lastRow = baseSheet.getLastRow();
+  let returnMessage = '結果発表〜！';
+
+  if (lastRow > 1){
+    let shoppingList = getShoppingList(baseSheet,lastRow);
+    for (let i = lastRow; i > 1; i--){
+      baseSheet.deleteRow(i);
+      returnMessage += '\n' + shoppingList[lastRow - i];
+    }
+  } else {
+    returnMessage += '\n' + '何もないよ〜';
+  };
+  returnMessage += '\n' + 'を全部削除したよ〜';
+  return buildMessage(returnMessage);
+}
+
 function getShoppingList(baseSheet,lastRow){
   var shoppingList = baseSheet.getRange('C2:C' + lastRow).getValues().flat().filter(String).map(String);
   return shoppingList;

@@ -22,7 +22,7 @@ curl -X POST https://api.line.me/v2/bot/richmenu \
                 },
                 "action": {
                     "type": "message",
-                    "text": "家計簿登録"
+                    "text": "買い物リスト削除"
                 }
             },
             {
