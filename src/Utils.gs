@@ -19,6 +19,17 @@ function today(){
 }
 
 /**
+ * 日付を作成し返す
+ * @param {Number} [n] - 数値(nヶ月前の指定)
+ * @return {Date} [date] - date形式の1ヶ月前日付
+ */
+function preMonth(n){
+  var today = new Date();
+  today.setMonth(today.getMonth() - n);
+  return today;
+}
+
+/**
  * 日付け文字列を作成し返す
  * @param {Date} [date] - 日付けオブジェクト
  * @param {String} [delimiter] - 日付けの間の区切り文字

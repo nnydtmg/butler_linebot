@@ -22,7 +22,7 @@ curl -X POST https://api.line.me/v2/bot/richmenu \
                 },
                 "action": {
                     "type": "message",
-                    "text": "買い物リスト削除"
+                    "text": "test"
                 }
             },
             {
@@ -34,7 +34,7 @@ curl -X POST https://api.line.me/v2/bot/richmenu \
                 },
                 "action": {
                     "type": "message",
-                    "text": "買い物リスト追加"
+                    "text": "買い物リスト"
                 }
             },
             {
@@ -82,7 +82,7 @@ curl -X POST https://api.line.me/v2/bot/richmenu \
                 },
                 "action": {
                     "type": "message",
-                    "text": "ヘルプ"
+                    "text": "家計簿参照"
                 }
             }
         ]

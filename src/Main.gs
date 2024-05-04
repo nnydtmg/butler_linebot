@@ -36,6 +36,8 @@ function doPost(e) {
 function convertUserMessageToLineMessage(userMessage) {
   if (userMessage === '家計簿登録') {
     return costInputLiff();
+  } else if (userMessage === '家計簿参照') {
+    return houseHoldCheck();
   } else if (userMessage === '買い物リスト') {
     var quickReplyItems = buildQuickReplyItemsForArray(_ShoppingListArray);
     return buildQuickReplyMessages('何する？😍',quickReplyItems);
