@@ -58,8 +58,8 @@ function houseHoldCheck(){
 function houseHoldSummaryCheck(yyyyMM,sheetName){
   var returnMessage = yyyyMM + "の登録状況だよ！！";
   var baseSheet = getBaseSheet(_Config.InputCostBookUrl,sheetName);
-  var subjectHouseHoldSummaryList = getHouseHoldSummaryList(baseSheet,"A3","B11");
-  var personHouseHoldSummaryList = getHouseHoldSummaryList(baseSheet,"D3","E6");
+  var subjectHouseHoldSummaryList = getHouseHoldSummaryList(baseSheet,"A3","C11");
+  var personHouseHoldSummaryList = getHouseHoldSummaryList(baseSheet,"E3","G6");
 
   for(let i = 0; i < subjectHouseHoldSummaryList.length; i++){
     returnMessage += '\n' + subjectHouseHoldSummaryList[i];
