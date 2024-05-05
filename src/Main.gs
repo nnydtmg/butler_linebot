@@ -37,7 +37,14 @@ function convertUserMessageToLineMessage(userMessage) {
   if (userMessage === '家計簿登録') {
     return costInputLiff();
   } else if (userMessage === '家計簿参照') {
+    var quickReplyItems = buildQuickReplyItemsForArray(_HouseHoldListArray);
+    return buildQuickReplyMessages('何する？😍',quickReplyItems);
+  } else if (userMessage === '直近5件') {
     return houseHoldCheck();
+  } else if (userMessage === '今月合計') {
+    return houseHoldSummaryCheck(Utilities.formatDate(today(),"JST","yyyyMM"),"今月合計");
+  } else if (userMessage === '先月合計') {
+    return houseHoldSummaryCheck(Utilities.formatDate(preMonth(1),"JST","yyyyMM"),"先月合計");
   } else if (userMessage === '買い物リスト') {
     var quickReplyItems = buildQuickReplyItemsForArray(_ShoppingListArray);
     return buildQuickReplyMessages('何する？😍',quickReplyItems);
