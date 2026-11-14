@@ -2,6 +2,13 @@
  * ユーザーからのアクションに返信する
  */
 function doPost(e) {
+  // GAS の Web アプリはリクエストヘッダーを取得できず、LINE の署名 (X-Line-Signature) を検証できない。
+  // 代わりに、スクリプトプロパティ WEBHOOK_TOKEN と同じ値を Webhook URL の ?token= に付けて照合する。
+  // トークンが一致しないリクエストは処理しない。
+  if (!isAuthorizedWebhook(e)) {
+    return ContentService.createTextOutput(JSON.stringify({'content': 'forbidden'})).setMimeType(ContentService.MimeType.JSON);
+  }
+
   const json = JSON.parse(e.postData.contents);
 
   //返信するためのトークン取得
@@ -89,4 +96,27 @@ function createReplyRequest(replyToken, message) {
       'messages': message,
     }),
   }
+}
+
+
+/**
+ * Webhook URL のクエリパラメータ token を、スクリプトプロパティ WEBHOOK_TOKEN と照合する。
+ * WEBHOOK_TOKEN が未設定の場合は従来どおり処理する（警告ログのみ）。設定を強く推奨。
+ */
+function isAuthorizedWebhook(e) {
+  const expected = PropertiesService.getScriptProperties().getProperty('WEBHOOK_TOKEN');
+  if (!expected) {
+    console.warn('WEBHOOK_TOKEN is not set. Webhook requests are not authenticated.');
+    return true;
+  }
+  const actual = (e && e.parameter && e.parameter.token) || '';
+  if (actual.length !== expected.length) {
+    return false;
+  }
+  // 文字列比較の時間差を減らすため、全文字を比較する
+  let diff = 0;
+  for (let i = 0; i < expected.length; i++) {
+    diff |= expected.charCodeAt(i) ^ actual.charCodeAt(i);
+  }
+  return diff === 0;
 }
